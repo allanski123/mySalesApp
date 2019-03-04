@@ -10,22 +10,20 @@ import UIKit
 import RealmSwift
 import OpalImagePicker
 import Photos
-import SDWebImage
-
-struct CellData {
-    let image: UIImage?
-    let message: String?
-}
+import Nuke
 
 class activeItemsViewController: UITableViewController {
     
-    var data = [CellData]()
+    var data = [URL]()
+    var info = [String]()
     
+    /*
     @IBAction func showItems(_ sender: Any) {
         getActiveItems()
         tableView.reloadData()
     }
-    
+    */
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         getActiveItems()
@@ -56,24 +54,39 @@ class activeItemsViewController: UITableViewController {
             
             if FileManager.default.fileExists(atPath: images[0]) {
                 let imageUrl: URL = URL(fileURLWithPath: images[0])
-                let imageData: Data = try! Data(contentsOf: imageUrl)
-                let imageToShow: UIImage = UIImage(data: imageData, scale: UIScreen.main.scale)!
+                //let imageData: Data = try! Data(contentsOf: imageUrl)
+                //let imageToShow: UIImage = UIImage(data: imageData, scale: UIScreen.main.scale)!
                 
-                data.append(CellData.init(image: imageToShow, message: title))
+                info.append(title!)
+                data.append(imageUrl)
+                
             }
         }
-        self.tableView.register(CustomCell.self, forCellReuseIdentifier: "custom")
-        self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 200
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "custom") as! CustomCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        let imageView = cell?.viewWithTag(1) as! UIImageView
+        imageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        cell.mainImage = data[indexPath.row].image
-        cell.message = data[indexPath.row].message
-        cell.layoutSubviews()
-        return cell
+        let textView = cell?.viewWithTag(2) as! UITextField
+        textView.text = info[indexPath.row]
+        
+        let options = ImageLoadingOptions(
+            placeholder: UIImage(named: "splash"),
+            transition: .fadeIn(duration: 0.5)
+        )
+        
+        let request = ImageRequest(
+            url: data[indexPath.row],
+            targetSize: CGSize(width: 100, height: 100),
+            contentMode: .aspectFill)
+        
+        Nuke.loadImage(with: request, options: options, into: imageView)
+        
+        
+        return cell!
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

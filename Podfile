@@ -8,7 +8,7 @@ target 'mySalesApp' do
   # Pods for mySalesApp
   pod 'RealmSwift'
   pod 'OpalImagePicker'
-  pod 'SDWebImage'
+  pod 'Nuke'
 
   target 'mySalesAppTests' do
     inherit! :search_paths

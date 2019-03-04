@@ -10,7 +10,6 @@
 		5DC3C8DCC8C42A4CD96336DF /* Pods_mySalesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60717F7327FB077D5627CAB /* Pods_mySalesApp.framework */; };
 		674E1477C650A38C5FF2E504 /* Pods_mySalesAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96FD3EC7F2AA3D87DDDC4B25 /* Pods_mySalesAppUITests.framework */; };
 		7B33EDA22227B778004C7822 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B33EDA12227B778004C7822 /* AppDelegate.swift */; };
-		7B33EDA42227B778004C7822 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B33EDA32227B778004C7822 /* ViewController.swift */; };
 		7B33EDA72227B778004C7822 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B33EDA52227B778004C7822 /* Main.storyboard */; };
 		7B33EDA92227B77E004C7822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B33EDA82227B77E004C7822 /* Assets.xcassets */; };
 		7B33EDAC2227B77E004C7822 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B33EDAA2227B77E004C7822 /* LaunchScreen.storyboard */; };
@@ -19,7 +18,6 @@
 		7B33EDD02227BAF7004C7822 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B33EDCF2227BAF7004C7822 /* Item.swift */; };
 		7B33EDD42227C9D1004C7822 /* createItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B33EDD32227C9D0004C7822 /* createItemViewController.swift */; };
 		7B33EDD62228D5AA004C7822 /* activeItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B33EDD52228D5AA004C7822 /* activeItemsViewController.swift */; };
-		7B4269DF222A4B6000E87C58 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4269DE222A4B6000E87C58 /* CustomCell.swift */; };
 		7B4269E1222A7C2300E87C58 /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4269E0222A7C2300E87C58 /* tabBarViewController.swift */; };
 		C7D67F436411C18BDDEFA958 /* Pods_mySalesAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707604B69E87C90CB10DBBE /* Pods_mySalesAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -46,7 +44,6 @@
 		1707604B69E87C90CB10DBBE /* Pods_mySalesAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mySalesAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B33ED9E2227B778004C7822 /* mySalesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mySalesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B33EDA12227B778004C7822 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7B33EDA32227B778004C7822 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7B33EDA62227B778004C7822 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7B33EDA82227B77E004C7822 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7B33EDAB2227B77E004C7822 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -60,7 +57,6 @@
 		7B33EDCF2227BAF7004C7822 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7B33EDD32227C9D0004C7822 /* createItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = createItemViewController.swift; path = /Users/allanski/Dropbox/apps/mySalesApp/mySalesApp/createItemViewController.swift; sourceTree = "<absolute>"; };
 		7B33EDD52228D5AA004C7822 /* activeItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activeItemsViewController.swift; sourceTree = "<group>"; };
-		7B4269DE222A4B6000E87C58 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomCell.swift; path = /Users/allanski/Dropbox/apps/mySalesApp/mySalesApp/CustomCell.swift; sourceTree = "<absolute>"; };
 		7B4269E0222A7C2300E87C58 /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarViewController.swift; sourceTree = "<group>"; };
 		96FD3EC7F2AA3D87DDDC4B25 /* Pods_mySalesAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mySalesAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60717F7327FB077D5627CAB /* Pods_mySalesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mySalesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,11 +143,9 @@
 		7B33EDA02227B778004C7822 /* mySalesApp */ = {
 			isa = PBXGroup;
 			children = (
-				7B4269DE222A4B6000E87C58 /* CustomCell.swift */,
 				7B33EDD32227C9D0004C7822 /* createItemViewController.swift */,
 				7B33EDA12227B778004C7822 /* AppDelegate.swift */,
 				7B33EDD52228D5AA004C7822 /* activeItemsViewController.swift */,
-				7B33EDA32227B778004C7822 /* ViewController.swift */,
 				7B4269E0222A7C2300E87C58 /* tabBarViewController.swift */,
 				7B33EDCF2227BAF7004C7822 /* Item.swift */,
 				7B33EDA52227B778004C7822 /* Main.storyboard */,
@@ -252,6 +246,7 @@
 				TargetAttributes = {
 					7B33ED9D2227B778004C7822 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					7B33EDB12227B77E004C7822 = {
 						CreatedOnToolsVersion = 10.1;
@@ -364,19 +359,19 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-mySalesApp/Pods-mySalesApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/OpalImagePicker/OpalImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpalImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -412,12 +407,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B33EDA42227B778004C7822 /* ViewController.swift in Sources */,
 				7B33EDD02227BAF7004C7822 /* Item.swift in Sources */,
 				7B33EDA22227B778004C7822 /* AppDelegate.swift in Sources */,
 				7B4269E1222A7C2300E87C58 /* tabBarViewController.swift in Sources */,
 				7B33EDD62228D5AA004C7822 /* activeItemsViewController.swift in Sources */,
-				7B4269DF222A4B6000E87C58 /* CustomCell.swift in Sources */,
 				7B33EDD42227C9D1004C7822 /* createItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,6 +587,7 @@
 			baseConfigurationReference = C302DED6F068A719573A0487 /* Pods-mySalesApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8N6S73J44X;
 				INFOPLIST_FILE = mySalesApp/Info.plist;
@@ -603,6 +597,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = allanski.mySalesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -613,6 +609,7 @@
 			baseConfigurationReference = D22585EC680D3B4B73B043F6 /* Pods-mySalesApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8N6S73J44X;
 				INFOPLIST_FILE = mySalesApp/Info.plist;
@@ -622,6 +619,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = allanski.mySalesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

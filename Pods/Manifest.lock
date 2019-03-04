@@ -1,32 +1,30 @@
 PODS:
+  - Nuke (7.5.2)
   - OpalImagePicker (2.0.0)
   - Realm (3.13.1):
     - Realm/Headers (= 3.13.1)
   - Realm/Headers (3.13.1)
   - RealmSwift (3.13.1):
     - Realm (= 3.13.1)
-  - SDWebImage (4.4.6):
-    - SDWebImage/Core (= 4.4.6)
-  - SDWebImage/Core (4.4.6)
 
 DEPENDENCIES:
+  - Nuke
   - OpalImagePicker
   - RealmSwift
-  - SDWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Nuke
     - OpalImagePicker
     - Realm
     - RealmSwift
-    - SDWebImage
 
 SPEC CHECKSUMS:
+  Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
   OpalImagePicker: efc91612ef5b3849314801f68fddc26200da9435
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
-  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
 
-PODFILE CHECKSUM: 2fc77b245cf5fe57e5baa2ea80f4227eb60e55c0
+PODFILE CHECKSUM: f4cf9eee939aaf714b66d06144117729ee959621
 
 COCOAPODS: 1.6.1
