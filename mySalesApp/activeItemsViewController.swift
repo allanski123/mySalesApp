@@ -15,8 +15,9 @@ import Nuke
 class activeItemsViewController: UITableViewController {
     
     var data = [URL]()
-    var info = [String]()
-    var pictures = [UIImage]()
+    var titles = [String]()
+    var descripts = [String]()
+    var aspectRatios = [CGFloat]()
     
     /*
      @IBAction func showItems(_ sender: Any) {
@@ -28,6 +29,8 @@ class activeItemsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getActiveItems()
+
+
     }
     
     // only use for debugging
@@ -41,7 +44,12 @@ class activeItemsViewController: UITableViewController {
     
     func getActiveItems() {
         PHImageManager.default()
+        tableView.estimatedRowHeight = tableView.rowHeight
+        tableView.rowHeight = UITableView.automaticDimension
+        
         data.removeAll()
+        titles.removeAll()
+        descripts.removeAll()
         
         let realm = try! Realm()
         let results = realm.objects(Item.self).filter("soldDate == nil")
@@ -58,35 +66,36 @@ class activeItemsViewController: UITableViewController {
                 let imageData: Data = try! Data(contentsOf: imageUrl)
                 let imageToShow: UIImage = UIImage(data: imageData, scale: UIScreen.main.scale)!
                 
-                info.append(title!)
+                titles.append(title!)
                 data.append(imageUrl)
-                pictures.append(imageToShow)
+                descripts.append(about!)
+                aspectRatios.append(imageToShow.getCropRatio())
                 
             }
         }
-        
-        self.tableView.register(ImageViewCell.self, forCellReuseIdentifier: "Cell")
+    
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! ImageViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemTableViewCell
+        
         
         let options = ImageLoadingOptions(
             placeholder: UIImage(named: "splash"),
             transition: .fadeIn(duration: 0.5)
         )
         
-        let currentImage = pictures[indexPath.row]
-        let imageCrop = currentImage.getCropRatio()
-        let scaledWidth = tableView.frame.width
-        let scaledHeight = tableView.frame.width / imageCrop
+        let scaledWidth = 64 * UIScreen.main.scale
+        let scaledHeight = scaledWidth / aspectRatios[indexPath.row]
         
         let request = ImageRequest(
             url: data[indexPath.row],
             targetSize: CGSize(width: scaledWidth, height: scaledHeight),
             contentMode: .aspectFit)
         
-        Nuke.loadImage(with: request, options: options, into: cell.mainImageView)
+        Nuke.loadImage(with: request, options: options, into: cell.itemImageView)
+        cell.itemTitleLabel.text = titles[indexPath.row]
+        cell.itemDescLabel.text = descripts[indexPath.row]
         
         return cell
     }
@@ -94,12 +103,7 @@ class activeItemsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let currentImage = pictures[indexPath.row]
-        let imageCrop = currentImage.getCropRatio()
-        return tableView.frame.width / imageCrop
-    }
+
 }
 
 extension UIImage {
@@ -108,4 +112,3 @@ extension UIImage {
         return widthRatio
     }
 }
-

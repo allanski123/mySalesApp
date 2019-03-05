@@ -67,13 +67,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="145" id="8dj-ex-3xr">
-                                <rect key="frame" x="0.0" y="28" width="375" height="145"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="166" id="8dj-ex-3xr" customClass="ItemTableViewCell" customModule="mySalesApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="166"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8dj-ex-3xr" id="ukg-dJ-Dgj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="144.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="165.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pz3-w7-sgz">
+                                            <rect key="frame" x="12" y="12" width="64" height="64"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="64" id="1WT-H3-7kJ"/>
+                                                <constraint firstAttribute="height" constant="64" id="gOc-LP-ij5"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Item Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59e-sy-cRQ">
+                                            <rect key="frame" x="84" y="2" width="279" height="53"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" misplaced="YES" text="A really super long asdkonaosdn oansdoj ansjodnoajnsdjoansdjo ansdjonaosjdnasond joasndjoan sdojandjoansdojn" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQh-q5-67r">
+                                            <rect key="frame" x="84" y="35" width="279" height="84.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="wQh-q5-67r" secondAttribute="bottom" constant="12" id="Axc-F8-ucR"/>
+                                        <constraint firstAttribute="trailing" secondItem="59e-sy-cRQ" secondAttribute="trailing" constant="12" id="FOl-02-wMf"/>
+                                        <constraint firstAttribute="trailing" secondItem="wQh-q5-67r" secondAttribute="trailing" constant="12" id="FfA-eg-gjh"/>
+                                        <constraint firstItem="59e-sy-cRQ" firstAttribute="leading" secondItem="Pz3-w7-sgz" secondAttribute="trailing" constant="8" id="Gdr-vE-rz2"/>
+                                        <constraint firstItem="59e-sy-cRQ" firstAttribute="top" secondItem="ukg-dJ-Dgj" secondAttribute="top" constant="12" id="W7V-BT-4JD"/>
+                                        <constraint firstItem="Pz3-w7-sgz" firstAttribute="top" secondItem="ukg-dJ-Dgj" secondAttribute="top" constant="12" id="izd-eB-8KJ"/>
+                                        <constraint firstItem="Pz3-w7-sgz" firstAttribute="leading" secondItem="ukg-dJ-Dgj" secondAttribute="leading" constant="12" id="odk-Cw-EK3"/>
+                                        <constraint firstItem="wQh-q5-67r" firstAttribute="top" secondItem="59e-sy-cRQ" secondAttribute="bottom" constant="2" id="uOL-NL-T9h"/>
+                                        <constraint firstItem="wQh-q5-67r" firstAttribute="leading" secondItem="Pz3-w7-sgz" secondAttribute="trailing" constant="8" id="wkO-X7-roT"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="84" minY="0.0" maxX="12" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="itemDescLabel" destination="wQh-q5-67r" id="AYr-wJ-tlo"/>
+                                    <outlet property="itemImageView" destination="Pz3-w7-sgz" id="KhJ-Rk-xc3"/>
+                                    <outlet property="itemTitleLabel" destination="59e-sy-cRQ" id="aRY-Rv-vIz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

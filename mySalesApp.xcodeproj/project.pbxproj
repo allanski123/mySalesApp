@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5DC3C8DCC8C42A4CD96336DF /* Pods_mySalesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A60717F7327FB077D5627CAB /* Pods_mySalesApp.framework */; };
 		674E1477C650A38C5FF2E504 /* Pods_mySalesAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96FD3EC7F2AA3D87DDDC4B25 /* Pods_mySalesAppUITests.framework */; };
-		7B143927222D4DD4006341FE /* ImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B143926222D4DD4006341FE /* ImageViewCell.swift */; };
 		7B33EDA22227B778004C7822 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B33EDA12227B778004C7822 /* AppDelegate.swift */; };
 		7B33EDA72227B778004C7822 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B33EDA52227B778004C7822 /* Main.storyboard */; };
 		7B33EDA92227B77E004C7822 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B33EDA82227B77E004C7822 /* Assets.xcassets */; };
@@ -20,6 +19,7 @@
 		7B33EDD42227C9D1004C7822 /* createItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B33EDD32227C9D0004C7822 /* createItemViewController.swift */; };
 		7B33EDD62228D5AA004C7822 /* activeItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B33EDD52228D5AA004C7822 /* activeItemsViewController.swift */; };
 		7B4269E1222A7C2300E87C58 /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4269E0222A7C2300E87C58 /* tabBarViewController.swift */; };
+		7B71AE56222EB55F0051549C /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B71AE55222EB55F0051549C /* ItemTableViewCell.swift */; };
 		C7D67F436411C18BDDEFA958 /* Pods_mySalesAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1707604B69E87C90CB10DBBE /* Pods_mySalesAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +43,6 @@
 /* Begin PBXFileReference section */
 		1023581451B56DFB0BC0DBB6 /* Pods-mySalesAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mySalesAppTests.release.xcconfig"; path = "Target Support Files/Pods-mySalesAppTests/Pods-mySalesAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		1707604B69E87C90CB10DBBE /* Pods_mySalesAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mySalesAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B143926222D4DD4006341FE /* ImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewCell.swift; sourceTree = "<group>"; };
 		7B33ED9E2227B778004C7822 /* mySalesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mySalesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B33EDA12227B778004C7822 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7B33EDA62227B778004C7822 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 		7B33EDD32227C9D0004C7822 /* createItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = createItemViewController.swift; path = /Users/allanski/Dropbox/apps/mySalesApp/mySalesApp/createItemViewController.swift; sourceTree = "<absolute>"; };
 		7B33EDD52228D5AA004C7822 /* activeItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activeItemsViewController.swift; sourceTree = "<group>"; };
 		7B4269E0222A7C2300E87C58 /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarViewController.swift; sourceTree = "<group>"; };
+		7B71AE55222EB55F0051549C /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		96FD3EC7F2AA3D87DDDC4B25 /* Pods_mySalesAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mySalesAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60717F7327FB077D5627CAB /* Pods_mySalesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mySalesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B913B30E016DBFEF0012A1E1 /* Pods-mySalesAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mySalesAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-mySalesAppUITests/Pods-mySalesAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 				7B33EDD32227C9D0004C7822 /* createItemViewController.swift */,
 				7B33EDA12227B778004C7822 /* AppDelegate.swift */,
 				7B33EDD52228D5AA004C7822 /* activeItemsViewController.swift */,
-				7B143926222D4DD4006341FE /* ImageViewCell.swift */,
+				7B71AE55222EB55F0051549C /* ItemTableViewCell.swift */,
 				7B4269E0222A7C2300E87C58 /* tabBarViewController.swift */,
 				7B33EDCF2227BAF7004C7822 /* Item.swift */,
 				7B33EDA52227B778004C7822 /* Main.storyboard */,
@@ -414,7 +414,7 @@
 				7B33EDA22227B778004C7822 /* AppDelegate.swift in Sources */,
 				7B4269E1222A7C2300E87C58 /* tabBarViewController.swift in Sources */,
 				7B33EDD62228D5AA004C7822 /* activeItemsViewController.swift in Sources */,
-				7B143927222D4DD4006341FE /* ImageViewCell.swift in Sources */,
+				7B71AE56222EB55F0051549C /* ItemTableViewCell.swift in Sources */,
 				7B33EDD42227C9D1004C7822 /* createItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
