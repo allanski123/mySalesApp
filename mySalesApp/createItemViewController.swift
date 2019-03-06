@@ -53,8 +53,11 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
     override func viewDidLoad() {
         aboutItem.layer.borderWidth = 1
         aboutItem.layer.borderColor = UIColor.black.cgColor
-        
         super.viewDidLoad()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
         
     }
     
@@ -62,6 +65,7 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
     // https://stackoverflow.com/questions/44472070/how-to-get-image-url-from-phasset-is-it-possible-to-save-image-using-phasset-ur
     @IBAction func selectImageButton(_ sender: Any) {
         let imagePicker = OpalImagePickerController()
+        imagePicker.maximumSelectionsAllowed = 1
         
         presentOpalImagePickerController(imagePicker, animated: true, select: { (assets) in
             
@@ -96,7 +100,8 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
     func insertItem() {
         let realm = try! Realm()
         
-        var newItem = Item()
+        let newItem = Item()
+        newItem.uuid = UUID().uuidString
         newItem.title = adTitle.text
         newItem.about = aboutItem.text
         newItem.purchasedDate = Date()

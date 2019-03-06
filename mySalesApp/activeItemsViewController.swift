@@ -14,10 +14,7 @@ import Nuke
 
 class activeItemsViewController: UITableViewController {
     
-    var data = [URL]()
-    var titles = [String]()
-    var descripts = [String]()
-    var aspectRatios = [CGFloat]()
+    var uuids = [String]()
     
     /*
      @IBAction func showItems(_ sender: Any) {
@@ -29,8 +26,6 @@ class activeItemsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getActiveItems()
-
-
     }
     
     // only use for debugging
@@ -46,64 +41,78 @@ class activeItemsViewController: UITableViewController {
         PHImageManager.default()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
+        navigationItem.rightBarButtonItem = editButtonItem
         
-        data.removeAll()
-        titles.removeAll()
-        descripts.removeAll()
+        uuids.removeAll()
         
         let realm = try! Realm()
         let results = realm.objects(Item.self).filter("soldDate == nil")
         
         for result in results {
-            let title = result.title
-            let about = result.about
-            let purchasePrice = result.purchasePrice.value
-            let category = result.category
-            let images = result.images
-            
-            if FileManager.default.fileExists(atPath: images[0]) {
-                let imageUrl: URL = URL(fileURLWithPath: images[0])
-                let imageData: Data = try! Data(contentsOf: imageUrl)
-                let imageToShow: UIImage = UIImage(data: imageData, scale: UIScreen.main.scale)!
-                
-                titles.append(title!)
-                data.append(imageUrl)
-                descripts.append(about!)
-                aspectRatios.append(imageToShow.getCropRatio())
-                
-            }
+            let uuid = result.uuid
+            uuids.append(uuid!)
         }
     
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemTableViewCell
         
+        let realm = try! Realm()
+        let uuid = "uuid == '" + uuids[indexPath.row] + "'"
+        let results = realm.objects(Item.self).filter(uuid).first
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemTableViewCell
         
         let options = ImageLoadingOptions(
             placeholder: UIImage(named: "splash"),
             transition: .fadeIn(duration: 0.5)
         )
         
+        if results == nil {
+            return UITableViewCell()
+        }
+        
+        let imageUrl: URL = URL(fileURLWithPath: (results?.images[0])!)
+        let imageData: Data = try! Data(contentsOf: imageUrl)
+        let imageToShow: UIImage = UIImage(data: imageData, scale: UIScreen.main.scale)!
+        
+        let imageCrop = imageToShow.getCropRatio()
         let scaledWidth = 64 * UIScreen.main.scale
-        let scaledHeight = scaledWidth / aspectRatios[indexPath.row]
+        let scaledHeight = scaledWidth / imageCrop
         
         let request = ImageRequest(
-            url: data[indexPath.row],
+            url: imageUrl,
             targetSize: CGSize(width: scaledWidth, height: scaledHeight),
             contentMode: .aspectFit)
         
         Nuke.loadImage(with: request, options: options, into: cell.itemImageView)
-        cell.itemTitleLabel.text = titles[indexPath.row]
-        cell.itemDescLabel.text = descripts[indexPath.row]
+        cell.itemTitleLabel.text = results?.title
+        cell.itemDescLabel.text = results?.about
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return uuids.count
     }
 
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            let realm = try! Realm()
+            let uuid = "uuid == '" + uuids[indexPath.row] + "'"
+            let object = realm.objects(Item.self).filter(uuid).first
+            
+            try! realm.write {
+                realm.delete(object!)
+            }
+            
+            uuids.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+    }
+    
 }
 
 extension UIImage {

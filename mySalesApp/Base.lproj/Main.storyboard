@@ -50,7 +50,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="2Gp-oI-TRC" kind="relationship" relationship="viewControllers" id="lwb-2u-CMD"/>
-                        <segue destination="yCN-3A-u1J" kind="relationship" relationship="viewControllers" id="Kpn-jz-RA3"/>
+                        <segue destination="cwj-yX-KkU" kind="relationship" relationship="viewControllers" id="Kpn-jz-RA3"/>
                         <segue destination="mhB-iU-zIk" kind="relationship" relationship="viewControllers" id="ULK-xl-3UE"/>
                     </connections>
                 </tabBarController>
@@ -81,7 +81,7 @@
                                                 <constraint firstAttribute="height" constant="64" id="gOc-LP-ij5"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Item Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59e-sy-cRQ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Item Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59e-sy-cRQ">
                                             <rect key="frame" x="84" y="2" width="279" height="53"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
@@ -119,11 +119,11 @@
                             <outlet property="delegate" destination="yCN-3A-u1J" id="zw4-Q2-la9"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Active Items" image="icons8-checkmark-25" id="IqD-Jh-f2s"/>
+                    <navigationItem key="navigationItem" title="Active Items" id="rRu-6n-bPo"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMy-la-L1M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="941.60000000000002" y="-628.33583208395805"/>
+            <point key="canvasLocation" x="1880.8" y="-628.33583208395805"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="59T-Ea-lrJ">
@@ -173,7 +173,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gqe-c2-wjm">
                                 <rect key="frame" x="139" y="301" width="97" height="30"/>
@@ -197,7 +197,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSG-H3-nLs">
                                 <rect key="frame" x="139" y="420" width="144" height="30"/>
@@ -230,6 +230,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vb5-lH-Y9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="940" y="99.400299850074973"/>
+        </scene>
+        <!--Active Items-->
+        <scene sceneID="O6V-8c-TCf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cwj-yX-KkU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Active Items" image="icons8-checkmark-25" id="IqD-Jh-f2s"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0OO-fr-O77">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="yCN-3A-u1J" kind="relationship" relationship="rootViewController" id="qdW-9v-Gih"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f2P-IF-OQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="941.60000000000002" y="-628.33583208395805"/>
         </scene>
     </scenes>
     <resources>

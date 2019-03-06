@@ -11,6 +11,7 @@ import RealmSwift
 
 class Item: Object {
     
+    @objc dynamic var uuid: String?
     @objc dynamic var title: String?
     @objc dynamic var about: String?
     @objc dynamic var category: String?
