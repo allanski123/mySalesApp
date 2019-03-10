@@ -10,7 +10,6 @@ import Foundation
 import RealmSwift
 
 class Item: Object {
-    
     @objc dynamic var uuid: String?
     @objc dynamic var title: String?
     @objc dynamic var about: String?
@@ -20,5 +19,4 @@ class Item: Object {
     let purchasePrice = RealmOptional<Double>()
     let soldPrice = RealmOptional<Double>()
     let images = List<String>()
-    
 }

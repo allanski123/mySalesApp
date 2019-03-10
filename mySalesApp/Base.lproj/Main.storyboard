@@ -10,35 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Profits-->
-        <scene sceneID="ata-9P-SYl">
-            <objects>
-                <tableViewController id="mhB-iU-zIk" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2sb-uf-dFw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="6vH-a6-hax">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6vH-a6-hax" id="Lr4-Lr-dBA">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="mhB-iU-zIk" id="IsZ-HX-LEd"/>
-                            <outlet property="delegate" destination="mhB-iU-zIk" id="XGF-7i-1Gj"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Profits" image="icons8-expensive-price-25" id="Kyz-53-GgS"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sKU-3N-3KU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1715" y="-786"/>
-        </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="N5I-gt-SSa">
             <objects>
@@ -49,14 +20,12 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="2Gp-oI-TRC" kind="relationship" relationship="viewControllers" id="lwb-2u-CMD"/>
                         <segue destination="cwj-yX-KkU" kind="relationship" relationship="viewControllers" id="Kpn-jz-RA3"/>
-                        <segue destination="mhB-iU-zIk" kind="relationship" relationship="viewControllers" id="ULK-xl-3UE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GS9-vE-fXM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-654" y="-243"/>
+            <point key="canvasLocation" x="284" y="-243.32833583208398"/>
         </scene>
         <!--Active Items-->
         <scene sceneID="OiG-gm-lM3">
@@ -81,25 +50,33 @@
                                                 <constraint firstAttribute="height" constant="64" id="gOc-LP-ij5"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Item Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59e-sy-cRQ">
-                                            <rect key="frame" x="84" y="2" width="279" height="53"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59e-sy-cRQ">
+                                            <rect key="frame" x="84" y="12" width="221" height="53"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" misplaced="YES" text="A really super long asdkonaosdn oansdoj ansjodnoajnsdjoansdjo ansdjonaosjdnasond joasndjoan sdojandjoansdojn" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQh-q5-67r">
-                                            <rect key="frame" x="84" y="35" width="279" height="84.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="A really super long asdkonaosdn oansdoj ansjodnoajnsdjoansdjo ansdjonaosjdnasond joasndjoan sdojandjoansdojn" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQh-q5-67r">
+                                            <rect key="frame" x="84" y="67" width="279" height="86.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cy3-PW-7R0">
+                                            <rect key="frame" x="305" y="12" width="58" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Cy3-PW-7R0" firstAttribute="leading" secondItem="59e-sy-cRQ" secondAttribute="trailing" id="4Y3-Zf-ts4"/>
                                         <constraint firstAttribute="bottom" secondItem="wQh-q5-67r" secondAttribute="bottom" constant="12" id="Axc-F8-ucR"/>
-                                        <constraint firstAttribute="trailing" secondItem="59e-sy-cRQ" secondAttribute="trailing" constant="12" id="FOl-02-wMf"/>
+                                        <constraint firstAttribute="trailing" secondItem="59e-sy-cRQ" secondAttribute="trailing" constant="70" id="FOl-02-wMf"/>
                                         <constraint firstAttribute="trailing" secondItem="wQh-q5-67r" secondAttribute="trailing" constant="12" id="FfA-eg-gjh"/>
                                         <constraint firstItem="59e-sy-cRQ" firstAttribute="leading" secondItem="Pz3-w7-sgz" secondAttribute="trailing" constant="8" id="Gdr-vE-rz2"/>
+                                        <constraint firstItem="Cy3-PW-7R0" firstAttribute="top" secondItem="ukg-dJ-Dgj" secondAttribute="top" constant="12" id="Mxe-n0-pwH"/>
                                         <constraint firstItem="59e-sy-cRQ" firstAttribute="top" secondItem="ukg-dJ-Dgj" secondAttribute="top" constant="12" id="W7V-BT-4JD"/>
+                                        <constraint firstAttribute="trailing" secondItem="Cy3-PW-7R0" secondAttribute="trailing" constant="12" id="bNX-Co-dZx"/>
                                         <constraint firstItem="Pz3-w7-sgz" firstAttribute="top" secondItem="ukg-dJ-Dgj" secondAttribute="top" constant="12" id="izd-eB-8KJ"/>
                                         <constraint firstItem="Pz3-w7-sgz" firstAttribute="leading" secondItem="ukg-dJ-Dgj" secondAttribute="leading" constant="12" id="odk-Cw-EK3"/>
                                         <constraint firstItem="wQh-q5-67r" firstAttribute="top" secondItem="59e-sy-cRQ" secondAttribute="bottom" constant="2" id="uOL-NL-T9h"/>
@@ -110,6 +87,7 @@
                                 <connections>
                                     <outlet property="itemDescLabel" destination="wQh-q5-67r" id="AYr-wJ-tlo"/>
                                     <outlet property="itemImageView" destination="Pz3-w7-sgz" id="KhJ-Rk-xc3"/>
+                                    <outlet property="itemPriceLabel" destination="Cy3-PW-7R0" id="jOu-rf-DEU"/>
                                     <outlet property="itemTitleLabel" destination="59e-sy-cRQ" id="aRY-Rv-vIz"/>
                                 </connections>
                             </tableViewCell>
@@ -119,11 +97,18 @@
                             <outlet property="delegate" destination="yCN-3A-u1J" id="zw4-Q2-la9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Active Items" id="rRu-6n-bPo"/>
+                    <navigationItem key="navigationItem" title="Active Items" id="rRu-6n-bPo">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="Rtu-Kp-MmY"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="icons8-plus-25" id="aWN-Gt-jx2">
+                            <connections>
+                                <segue destination="2Gp-oI-TRC" kind="show" id="Hxx-At-cgu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMy-la-L1M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1880.8" y="-628.33583208395805"/>
+            <point key="canvasLocation" x="2820" y="-628.33583208395805"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="59T-Ea-lrJ">
@@ -229,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vb5-lH-Y9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="940" y="99.400299850074973"/>
+            <point key="canvasLocation" x="3599" y="-628"/>
         </scene>
         <!--Active Items-->
         <scene sceneID="O6V-8c-TCf">
@@ -248,12 +233,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f2P-IF-OQu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="941.60000000000002" y="-628.33583208395805"/>
+            <point key="canvasLocation" x="1880.8" y="-628.33583208395805"/>
         </scene>
     </scenes>
     <resources>
         <image name="icons8-checkmark-25" width="18.75" height="18.75"/>
-        <image name="icons8-expensive-price-25" width="18.75" height="18.75"/>
         <image name="icons8-plus-25" width="18.75" height="18.75"/>
     </resources>
 </document>

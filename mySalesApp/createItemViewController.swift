@@ -15,7 +15,6 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
     var currentBox = UITextField()
     var pickerView = UIPickerView()
     
-    
     @IBOutlet weak var adTitle: UITextField!
     @IBOutlet weak var aboutItem: UITextView!
     @IBOutlet weak var price: UITextField!
@@ -57,8 +56,6 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
-        
-        
     }
     
     // Soure code for retrieving image URL from PHAsset
@@ -68,7 +65,6 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
         imagePicker.maximumSelectionsAllowed = 1
         
         presentOpalImagePickerController(imagePicker, animated: true, select: { (assets) in
-            
             for image in assets {
                 image.requestContentEditingInput(with: PHContentEditingInputRequestOptions()) { (editingInput, info) in
                     if let input = editingInput, let imgURL = input.fullSizeImageURL {
@@ -77,17 +73,14 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
                     }
                 }
             }
-            
             imagePicker.dismiss(animated: true, completion: nil)
             
         }, cancel: {
             
         })
-        
     }
     
     @IBAction func addItemButton(_ sender: Any) {
-        
         if adTitle.text == "" || aboutItem.text == "" || price.text == "" ||
             tagTextbox.text == "" || imageUrls.isEmpty {
             return
@@ -164,16 +157,5 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
         
         currentBox.inputView = pickerView
         dismissPickerView()
-    }
-    
-    
-}
-
-// https://stackoverflow.com/questions/28332946/how-do-i-get-the-current-date-in-short-format-in-swift
-extension Date {
-    func string(format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: self)
     }
 }

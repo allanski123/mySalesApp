@@ -9,7 +9,6 @@
 import UIKit
 
 class tabBarViewController: UITabBarController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,9 +19,4 @@ class tabBarViewController: UITabBarController {
             
         }
     }
-    
-
-
-
-
 }

@@ -15,7 +15,6 @@ import Nuke
 class activeItemsViewController: UITableViewController {
     
     var uuids = [String]()
-    
     /*
      @IBAction func showItems(_ sender: Any) {
      getActiveItems()
@@ -38,25 +37,33 @@ class activeItemsViewController: UITableViewController {
     }
     
     func getActiveItems() {
+        var sum = 0.0
+        
         PHImageManager.default()
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
-        navigationItem.rightBarButtonItem = editButtonItem
         
         uuids.removeAll()
         
         let realm = try! Realm()
-        let results = realm.objects(Item.self).filter("soldDate == nil")
+        let results = realm.objects(Item.self)
         
         for result in results {
             let uuid = result.uuid
             uuids.append(uuid!)
+            sum += (result.soldPrice.value! - result.purchasePrice.value!)
         }
-    
+        
+        navigationItem.leftBarButtonItem?.title = "$\(sum)";
+        if sum < 0.0 {
+            navigationItem.leftBarButtonItem?.tintColor = UIColor.red
+        }
+        else {
+            navigationItem.leftBarButtonItem?.tintColor = UIColor.green
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let realm = try! Realm()
         let uuid = "uuid == '" + uuids[indexPath.row] + "'"
         let results = realm.objects(Item.self).filter(uuid).first
@@ -88,6 +95,18 @@ class activeItemsViewController: UITableViewController {
         Nuke.loadImage(with: request, options: options, into: cell.itemImageView)
         cell.itemTitleLabel.text = results?.title
         cell.itemDescLabel.text = results?.about
+       
+        if let purchasePrice = results?.purchasePrice.value, let soldPrice = results?.soldPrice.value {
+            
+            if soldPrice == 0 {
+                cell.itemPriceLabel.text = "$\(purchasePrice)"
+                cell.itemPriceLabel.textColor = UIColor.red
+            }
+            else {
+                cell.itemPriceLabel.text = "$\(soldPrice - purchasePrice)"
+                cell.itemPriceLabel.textColor = UIColor.green
+            }
+        }
         
         return cell
     }
@@ -110,14 +129,5 @@ class activeItemsViewController: UITableViewController {
             uuids.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-        
-    }
-    
-}
-
-extension UIImage {
-    func getCropRatio() -> CGFloat {
-        let widthRatio = CGFloat(self.size.width / self.size.height)
-        return widthRatio
     }
 }
