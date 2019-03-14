@@ -9,6 +9,8 @@ target 'mySalesApp' do
   pod 'RealmSwift'
   pod 'OpalImagePicker'
   pod 'Nuke'
+  pod 'IQKeyboardManagerSwift'
+  pod 'UITextView+Placeholder'
 
   target 'mySalesAppTests' do
     inherit! :search_paths

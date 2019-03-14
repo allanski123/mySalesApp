@@ -9,17 +9,20 @@ import UIKit
 import RealmSwift
 import OpalImagePicker
 import Photos
+import Nuke
+import UITextView_Placeholder
 
 class createItemViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
     var currentBox = UITextField()
     var pickerView = UIPickerView()
     
-    @IBOutlet weak var adTitle: UITextField!
+    @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var aboutItem: UITextView!
+    @IBOutlet weak var adTitle: UITextField!
     @IBOutlet weak var price: UITextField!
     @IBOutlet weak var tagTextbox: UITextField!
-
+    
     var imageUrls = [String]()
     
     var tags = [
@@ -50,17 +53,25 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
     ]
     
     override func viewDidLoad() {
-        aboutItem.layer.borderWidth = 1
-        aboutItem.layer.borderColor = UIColor.black.cgColor
         super.viewDidLoad()
+        setupPage()
+    }
+    
+    func setupPage() {
+        itemImageView.image = UIImage(named: "placeholder")
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        itemImageView.isUserInteractionEnabled = true
+        itemImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        aboutItem.layer.borderWidth = 1
+        aboutItem.layer.borderColor = UIColor.lightGray.cgColor
+        aboutItem.placeholder = "Description"
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
     }
     
-    // Soure code for retrieving image URL from PHAsset
-    // https://stackoverflow.com/questions/44472070/how-to-get-image-url-from-phasset-is-it-possible-to-save-image-using-phasset-ur
-    @IBAction func selectImageButton(_ sender: Any) {
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         let imagePicker = OpalImagePickerController()
         imagePicker.maximumSelectionsAllowed = 1
         
@@ -70,14 +81,29 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
                     if let input = editingInput, let imgURL = input.fullSizeImageURL {
                         let localUrl = String(imgURL.absoluteString.dropFirst(5))
                         self.imageUrls.append(localUrl)
+                        
+                        Nuke.loadImage(with: imgURL, into: self.itemImageView)
                     }
                 }
+                
             }
             imagePicker.dismiss(animated: true, completion: nil)
             
         }, cancel: {
             
         })
+    }
+    
+    // https://stackoverflow.com/questions/30812057/phasset-to-uiimage
+    func getAssetThumbnail(asset: PHAsset) -> UIImage {
+        let manager = PHImageManager.default()
+        let option = PHImageRequestOptions()
+        var thumbnail = UIImage()
+        option.isSynchronous = true
+        manager.requestImage(for: asset, targetSize: CGSize(width: 100.0, height: 100.0), contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
+            thumbnail = result!
+        })
+        return thumbnail
     }
     
     @IBAction func addItemButton(_ sender: Any) {

@@ -1,4 +1,5 @@
 PODS:
+  - IQKeyboardManagerSwift (6.2.0)
   - Nuke (7.5.2)
   - OpalImagePicker (2.0.0)
   - Realm (3.13.1):
@@ -6,25 +7,32 @@ PODS:
   - Realm/Headers (3.13.1)
   - RealmSwift (3.13.1):
     - Realm (= 3.13.1)
+  - "UITextView+Placeholder (1.2.1)"
 
 DEPENDENCIES:
+  - IQKeyboardManagerSwift
   - Nuke
   - OpalImagePicker
   - RealmSwift
+  - "UITextView+Placeholder"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - IQKeyboardManagerSwift
     - Nuke
     - OpalImagePicker
     - Realm
     - RealmSwift
+    - "UITextView+Placeholder"
 
 SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
   OpalImagePicker: efc91612ef5b3849314801f68fddc26200da9435
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
 
-PODFILE CHECKSUM: f4cf9eee939aaf714b66d06144117729ee959621
+PODFILE CHECKSUM: db27d438066a9783a1c59ba2598d8fd7aa102233
 
 COCOAPODS: 1.6.1
