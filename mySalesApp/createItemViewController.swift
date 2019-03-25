@@ -14,14 +14,25 @@ import UITextView_Placeholder
 
 class createItemViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
+    var editUUID: String?
+    var editTitle: String?
+    var editItemUrl: URL?
+    var editBuyPrice: String?
+    var editSellPrice: String?
+    var editTagTextbox: String?
+    var editAboutItem: String?
+    
     var currentBox = UITextField()
     var pickerView = UIPickerView()
     
-    @IBOutlet weak var itemImageView: UIImageView!
-    @IBOutlet weak var aboutItem: UITextView!
     @IBOutlet weak var adTitle: UITextField!
-    @IBOutlet weak var price: UITextField!
+    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var buyPrice: UITextField!
+    @IBOutlet weak var sellPrice: UITextField!
     @IBOutlet weak var tagTextbox: UITextField!
+    @IBOutlet weak var aboutItem: UITextView!
+    @IBOutlet weak var button: UIButton!
+    
     
     var imageUrls = [String]()
     
@@ -58,14 +69,45 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     func setupPage() {
-        itemImageView.image = UIImage(named: "placeholder")
+        self.adTitle.text = editTitle
+        self.tagTextbox.text = editTagTextbox
+        self.aboutItem.text = editAboutItem
+        
+        if let info = editItemUrl {
+            button.setTitle("Update item details", for: .normal)
+            
+            let imageData: Data = try! Data(contentsOf: editItemUrl!)
+            let imageToShow: UIImage = UIImage(data: imageData, scale: UIScreen.main.scale)!
+            
+            let options = ImageLoadingOptions(
+                placeholder: UIImage(named: "splash"),
+                transition: .fadeIn(duration: 0.5)
+            )
+            
+            let request = ImageRequest(
+                url: info,
+                targetSize: CGSize(width: 351, height: 351 / imageToShow.getCropRatio()),
+                contentMode: .aspectFit)
+            
+            Nuke.loadImage(with: request, options: options, into: itemImageView)
+        }
+        
+        if let info = editBuyPrice {
+            self.buyPrice.text = info
+        }
+        if let info = editSellPrice {
+            self.sellPrice.text = info
+        }
+        
+        if editItemUrl == nil {
+            itemImageView.image = UIImage(named: "placeholder")
+        }
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         itemImageView.isUserInteractionEnabled = true
         itemImageView.addGestureRecognizer(tapGestureRecognizer)
-        
+ 
         aboutItem.layer.borderWidth = 1
         aboutItem.layer.borderColor = UIColor.lightGray.cgColor
-        aboutItem.placeholder = "Description"
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
@@ -107,13 +149,32 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
     }
     
     @IBAction func addItemButton(_ sender: Any) {
-        if adTitle.text == "" || aboutItem.text == "" || price.text == "" ||
-            tagTextbox.text == "" || imageUrls.isEmpty {
-            return
+        if button.titleLabel!.text == "Update item details" {
+            let realm = try! Realm()
+            let uuid = "uuid == '" + editUUID! + "'"
+            
+            if let results = realm.objects(Item.self).filter(uuid).first {
+                try! realm.write {
+                    results.title = adTitle.text
+                    results.purchasePrice.value = Double(buyPrice.text!)
+                    results.soldPrice.value = Double(sellPrice.text!)
+                    results.category = tagTextbox.text
+                    results.about = aboutItem.text
+                    results.images.removeAll()
+                    results.images.append(String((editItemUrl?.absoluteString.dropFirst(5))!))
+                }
+            }
+        }
+        else {
+            if adTitle.text == "" || aboutItem.text == "" || buyPrice.text == "" ||
+                tagTextbox.text == "" || imageUrls.isEmpty {
+                return
+            }
+            insertItem()
+            print(Realm.Configuration.defaultConfiguration.fileURL)
         }
         
-        insertItem()
-        print(Realm.Configuration.defaultConfiguration.fileURL)
+        performSegue(withIdentifier: "activeItemsSegue", sender: nil)
     }
     
     func insertItem() {
@@ -126,10 +187,11 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
         newItem.purchasedDate = Date()
         newItem.soldDate = nil
         
-        let a = Double(price.text!) ?? 0
+        let a = Double(buyPrice.text!) ?? 0
         newItem.purchasePrice.value = (a*100).rounded()/100
         
-        newItem.soldPrice.value = 0
+        let b = Double(sellPrice.text!) ?? 0
+        newItem.soldPrice.value = (b*100).rounded()/100
         
         for url in imageUrls {
             newItem.images.append(url)

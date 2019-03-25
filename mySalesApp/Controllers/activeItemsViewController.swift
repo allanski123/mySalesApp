@@ -15,12 +15,6 @@ import Nuke
 class activeItemsViewController: UITableViewController {
     
     var uuids = [String]()
-    /*
-     @IBAction func showItems(_ sender: Any) {
-     getActiveItems()
-     tableView.reloadData()
-     }
-     */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,9 +89,8 @@ class activeItemsViewController: UITableViewController {
         Nuke.loadImage(with: request, options: options, into: cell.itemImageView)
         cell.itemTitleLabel.text = results?.title
         cell.itemDescLabel.text = results?.about
-       
+        
         if let purchasePrice = results?.purchasePrice.value, let soldPrice = results?.soldPrice.value {
-            
             if soldPrice == 0 {
                 cell.itemPriceLabel.text = "$\(purchasePrice)"
                 cell.itemPriceLabel.textColor = UIColor.red
@@ -128,6 +121,34 @@ class activeItemsViewController: UITableViewController {
             
             uuids.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            getActiveItems()
+        }
+    }
+    
+    var selectedItem: String?
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedItem = uuids[indexPath.row]
+        performSegue(withIdentifier: "editItemSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editItemSegue" {
+            let vc = segue.destination as! createItemViewController
+            
+            let realm = try! Realm()
+            let uuid = "uuid == '" + selectedItem! + "'"
+            let results = realm.objects(Item.self).filter(uuid).first
+            
+            let url = URL(fileURLWithPath: (results?.images[0])!)
+            vc.editItemUrl = url
+            vc.editTitle = results?.title
+            if let pp = results?.purchasePrice.value, let sp = results?.soldPrice.value {
+                vc.editBuyPrice = "\(pp)"
+                vc.editSellPrice = "\(sp)"
+            }
+            vc.editTagTextbox = results?.category
+            vc.editAboutItem = results?.about
+            vc.editUUID = selectedItem!
         }
     }
 }
