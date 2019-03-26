@@ -18,6 +18,17 @@ class activeItemsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*
+        let realm = try! Realm()
+        let uuid = "uuid == '" + "3A623C32-C1EF-400B-9D4C-7819606B430F" + "'"
+        let results = realm.objects(Item.self).filter(uuid).first
+        
+        try! realm.write() {
+            realm.delete(results!)
+        }
+        */
+        
         getActiveItems()
     }
     
@@ -40,7 +51,7 @@ class activeItemsViewController: UITableViewController {
         uuids.removeAll()
         
         let realm = try! Realm()
-        let results = realm.objects(Item.self)
+        let results = realm.objects(Item.self).sorted(byKeyPath: "soldDate", ascending: true)
         
         for result in results {
             let uuid = result.uuid

@@ -79,17 +79,7 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
             let imageData: Data = try! Data(contentsOf: editItemUrl!)
             let imageToShow: UIImage = UIImage(data: imageData, scale: UIScreen.main.scale)!
             
-            let options = ImageLoadingOptions(
-                placeholder: UIImage(named: "splash"),
-                transition: .fadeIn(duration: 0.5)
-            )
-            
-            let request = ImageRequest(
-                url: info,
-                targetSize: CGSize(width: 351, height: 351 / imageToShow.getCropRatio()),
-                contentMode: .aspectFit)
-            
-            Nuke.loadImage(with: request, options: options, into: itemImageView)
+            Nuke.loadImage(with: info, into: itemImageView)
         }
         
         if let info = editBuyPrice {
@@ -158,10 +148,19 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
                     results.title = adTitle.text
                     results.purchasePrice.value = Double(buyPrice.text!)
                     results.soldPrice.value = Double(sellPrice.text!)
+                    if results.soldPrice.value! > 0.0 {
+                        results.soldDate = Date()
+                    }
+                    else {
+                        results.soldDate = Date(timeIntervalSinceReferenceDate: -123456789.0)
+                    }
+                    
                     results.category = tagTextbox.text
                     results.about = aboutItem.text
-                    results.images.removeAll()
-                    results.images.append(String((editItemUrl?.absoluteString.dropFirst(5))!))
+                    if let url = imageUrls.first {
+                        results.images.removeAll()
+                        results.images.append(url)
+                    }
                 }
             }
         }
@@ -185,7 +184,7 @@ class createItemViewController: UIViewController, UIPickerViewDataSource, UIPick
         newItem.title = adTitle.text
         newItem.about = aboutItem.text
         newItem.purchasedDate = Date()
-        newItem.soldDate = nil
+        newItem.soldDate = Date(timeIntervalSinceReferenceDate: -123456789.0)
         
         let a = Double(buyPrice.text!) ?? 0
         newItem.purchasePrice.value = (a*100).rounded()/100
